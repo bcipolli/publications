@@ -1,0 +1,6 @@
+addpath(genpath('../../_lib'));
+addpath(genpath('../../ringo/code'));
+
+% First, run ringo figures
+addpath(genpath('../../ringo/scripts/ringo_etal_1994'));
+demo_ring_f
