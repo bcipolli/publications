@@ -14,26 +14,26 @@ for fi = 1:length(fig_list)
         addpath(genpath(fullfile(GURU_dir, 'ringo', 'scripts', 'ringo_etal_1994')));
         demo_ringo_fig;
         if saving, export_fig(gcf, './Ringo_orig.png', '-transparent'); end;
-    
+    end;
         
     % Ringo et al. as a diff
-    elseif ismember('all', fig_list) || strcmp(fig_list{fi}, 'ringo_diff')
+    if ismember('all', fig_list) || strcmp(fig_list{fi}, 'ringo_diff')
         addpath(genpath(fullfile(GURU_dir, 'ringo', 'scripts', 'ringo_etal_1994')));
         demo_ringo_fig_diff;
         if saving, export_fig(gcf, './Ringo_diff.png', '-transparent'); end;
-    
+    end;
         
     % Wang et al. regression
-    elseif ismember('all', fig_list) || strcmp(fig_list{fi}, 'wang_regression')
+    if ismember('all', fig_list) || strcmp(fig_list{fi}, 'wang_regression')
         addpath(genpath(fullfile(cur_dir, '..', 'GURU_April8')));
         GURU_April8('w_dens');
         if saving, export_fig(gcf, './wang_regression.png', '-transparent'); end;
         GURU_April8('w_denshc');
         if saving, export_fig(gcf, './wang_regression_w_human.png', '-transparent'); end;
-    
+    end;
         
     % Rilling & Insel brain volume vs. inter- connections regression
-    elseif ismember('all', fig_list) || strcmp(fig_list{fi}, 'ri_basic_compare')
+    if ismember('all', fig_list) || strcmp(fig_list{fi}, 'ri_basic_compare')
         addpath(genpath(fullfile(GURU_dir, 'rilling', 'rilling_insel_1999s')));
         rib_response('individual', 'wm_cxns_vs_cc_cxns');
         if saving, export_fig(gcf, './ri_bv_vs_cc_cxns.png', '-transparent'); end;
@@ -43,10 +43,10 @@ for fi = 1:length(fig_list)
         [p,g] = allometric_regression(rib_fig2_gmas, rib_fig2_ccas, 'log', 1, true);
         allometric_plot2(rib_fig2_gmas, rib_fig2_ccas, p, g);
         if saving, export_fig(gcf, './rilling_orig.png', '-transparent'); end;
-
+    end;
         
     % Rilling & Insel connectivity scaling comparison
-    elseif ismember('all', fig_list) || strcmp(fig_list{fi}, 'ri_scaling_compare')
+    if ismember('all', fig_list) || strcmp(fig_list{fi}, 'ri_scaling_compare')
         addpath(genpath(fullfile(GURU_dir, 'rilling', 'rilling_insel_1999s')));
         for collation = {'species' 'family'}
             rib_response(collation{1}, 'prop_fibers_vs_prop_aa_cxns');
@@ -55,26 +55,26 @@ for fi = 1:length(fig_list)
             rib_response(collation{1}, 'prop_fibers_vs_prop_aa_cxns_linear');
             if saving, export_fig(gcf, sprintf('./ri_prop_fibers_vs_prop_aa_cxns_linear_%s.png',collation{1}), '-transparent'); end;
         end;
-
+    end;
     
     % Rilling & Insel connection strength comparison
-    elseif ismember('all', fig_list) || strcmp(fig_list{fi}, 'ri_strength_compare')
+    if ismember('all', fig_list) || strcmp(fig_list{fi}, 'ri_strength_compare')
         addpath(genpath(fullfile(GURU_dir, 'rilling', 'rilling_insel_1999s')));
         for collation = {'species' 'family'}
             rib_response(collation{1}, 'intra_vs_cc_scaling_linear');
             if saving, export_fig(gcf, sprintf('./ri_intra_vs_cc_scaling_linear_%s.png',collation{1}), '-transparent'); end;
         end;
-        
+    end; 
         
     % LaMantia & Rakic age vs. density regression
-    elseif ismember('all', fig_list) || strcmp(fig_list{fi}, 'age_vs_density')
+    if ismember('all', fig_list) || strcmp(fig_list{fi}, 'age_vs_density')
         addpath(genpath(fullfile(cur_dir, '..', 'GURU_April8')));
         GURU_April8('lma_dens');
         keyboard
-    
+    end;
 
     % Ringo repro w/ noise
-    elseif ismember('all', fig_list) || strcmp(fig_list{fi}, 'ringo_repro')
+    if ismember('all', fig_list) || strcmp(fig_list{fi}, 'ringo_repro')
         addpath(genpath(fullfile(GURU_dir, 'ringo', 'scripts', 'tdlc2013')));
 
         % Intrahemispheric patterns
@@ -83,10 +83,10 @@ for fi = 1:length(fig_list)
         if saving, export_fig(gcf, './ringo_repro_intra_n0.png', '-transparent'); close(figs(1)); end;
         figure(figs(2));
         if saving, export_fig(gcf, './ringo_repro_intra_n1.png', '-transparent'); close(figs(2)); end;
-        
+    end;        
 
     % Ringo repro w/ TRUE difference
-    elseif ismember('all', fig_list) || strcmp(fig_list{fi}, 'ringo_true')
+    if ismember('all', fig_list) || strcmp(fig_list{fi}, 'ringo_true')
         addpath(genpath(fullfile(GURU_dir, 'ringo', 'scripts', 'tdlc2013')));
 
         % Intrahemispheric patterns
@@ -101,11 +101,11 @@ for fi = 1:length(fig_list)
         close(figs(1));
         figure(figs(2));
         if saving, export_fig(gcf, './ringo_repro_inter_n1_sse.png', '-transparent'); close(figs(2)); end;
-        
+    end;
         
         
     % Predict ADD
-    elseif ismember('all', fig_list) || strcmp(fig_list{fi}, 'predict_add')
+    if ismember('all', fig_list) || strcmp(fig_list{fi}, 'predict_add')
         clear global % force production of all predict_ figures
         addpath(genpath(fullfile(GURU_dir, 'rilling', '_predict')));
         predict_human('gamma', 'predict_ab');
