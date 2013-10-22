@@ -1,6 +1,8 @@
 if ~exist('naconperarea','var')
-    addpath('rilling_insel_1999b');
-    rib_response; close all;
+    rilling_path = fullfile(fileparts(which(mfilename)), '..', '..', '..', 'rilling');
+    addpath(fullfile(rilling_path, 'rilling_insel_1999b'));
+%    rib_response; close all;
+    rib_data
 end;
 
 %% Figure 1: Rilling & Insel data
@@ -42,7 +44,7 @@ subplot(1,2,1);  set(gca, 'FontSize', 16);
 loglog(w_fig1e_brwt_est, 1E3*w_fig1e_dens_est, 'ro', 'LineWidth', 5, 'MarkerSize', 15);
 hold on; 
 loglog(xvals, 1E3*g_cca(xvals), 'LineWidth', 10);
-loglog(1300, 1E3*0.33*1.2, 'g*', 'LineWidth', 5, 'MarkerSize', 15);
+loglog(1300, 1E3*0.33*1.2*0.65, 'g*', 'LineWidth', 5, 'MarkerSize', 15);
 xlabel('brain weight (g)'); ylabel('CC fiber density (fibers/ \mum)');
 legend({' Original data', sprintf(' %4.2fX + {%4.2f}', p_cca), ' Humans'}, 'Location', 'NorthEast');
 axis square; set(gca, 'xlim', [-100 1300], 'ylim', 10.^[2.1 3.8]);
@@ -70,6 +72,8 @@ axis square;
 
 
 %% Figure 3: Final data
+naconperarea = nareaconns./nareas;
+
 xv = 1./(naconperarea-1);
 yv =  1./(0.3*nneurons./ncc_fibers-1);
 p_cca = allometric_regression(xv,yv, 'log', 1, false, false)

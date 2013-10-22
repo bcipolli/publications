@@ -8,6 +8,10 @@ if ~iscell(fig_list), fig_list = {fig_list}; end;
 GURU_dir = fullfile(fileparts(which(mfilename)), '..','..','..','..');
 rilling_dir = fullfile(GURU_dir, 'rilling');
 
+% Add paths
+addpath(genpath(fullfile(GURU_dir, '_lib')))
+addpath(genpath(fullfile(rilling_dir, '_lib')))
+
 % Load data
 %addpath(genpath(fullfile(rilling_dir,'berbel_innocenti_1988'))); bi_data;
 addpath(genpath(fullfile(rilling_dir,'rilling_insel_1999b')));   rib_data;
