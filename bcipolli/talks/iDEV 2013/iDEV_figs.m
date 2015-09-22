@@ -26,10 +26,12 @@ for fi = 1:length(fig_list)
     % Wang et al. regression
     if ismember('all', fig_list) || strcmp(fig_list{fi}, 'wang_regression')
         addpath(genpath(fullfile(cur_dir, '..', 'GURU_April8')));
-        GURU_April8('w_dens');
-        if saving, export_fig(gcf, './wang_regression.png', '-transparent'); end;
-        GURU_April8('w_denshc');
-        if saving, export_fig(gcf, './wang_regression_w_human.png', '-transparent'); end;
+%        GURU_April8('w_dens');
+%        if saving, export_fig(gcf, './wang_regression.png', '-transparent'); end;
+        GURU_April8('w_densh');
+        if saving, export_fig(gcf, './wang_regression_plot_human.png', '-transparent'); end;
+%        GURU_April8('w_denshc');
+%        if saving, export_fig(gcf, './wang_regression_w_human.png', '-transparent'); end;
     end;
         
     % Rilling & Insel brain volume vs. inter- connections regression
