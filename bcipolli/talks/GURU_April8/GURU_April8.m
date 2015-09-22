@@ -285,6 +285,16 @@ for fi=1:numel(fig_list)
         xlabel('Age (years)'); ylabel('CC fiber density (fibers/mm^2)');
     end;
     
+    if ismember('all',fig_list) || strcmp(fig_list{fi}, 'lma_naxons')            % Lamantia & Rakic (1990a): density decreases with age
+        [p,g] = allometric_regression(lra_cc_age, lra_cc_naxons/1E1, 'log', 1, false, '2');
+        allometric_plot2(lra_cc_age, lra_cc_naxons/1E1, p, g, 'linear');
+        set(gcf, 'Name', 'lma_naxons');
+        set(gcf,'Position',[235    40   743   644]);
+        guru_updatelegend(gca, 1, ' Lamantia & Rakic (1990)');
+        legend('Location','NorthEast');
+        xlabel('Age (years)'); ylabel('CC fiber count (millions)');
+    end;
+    
 
     if ismember('all',fig_list) || strcmp(fig_list{fi}, 'lms_dens')            % Lamantia & Rakic (1990a): density decreases with age
         plot(bi_fig7_dates, bi_fig7_total_fibers./bi_fig7_cca, 'ro');
